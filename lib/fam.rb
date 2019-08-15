@@ -72,7 +72,7 @@ module Fam
 
     # IMPLEMENT ME
     def get_grandparents(input_path:, child_name:, greatness:)
-      get_parents_at_generation(input_path: input_path, child_name: child_name, generations: greatness + 1)
+      get_parents_at_generation(input_path: input_path, child_name: child_name, generations: greatness.to_i + 1)
     end
 
     private
