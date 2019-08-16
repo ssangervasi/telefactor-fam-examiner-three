@@ -10,19 +10,15 @@ require 'spec_helpers/tempdir'
 include Fam::File::Helpers
 
 RSpec.shared_examples 'a successful response' do |output|
-  it 'persists the person' do
-    expect(subject.output).to eq(output)
-    expect(subject.error).to be_empty
-    expect(subject.status).to eq(0)
-  end
+  it('has the expected output') { expect(subject.output).to eq(output) }
+  it('does not have an error') { expect(subject.error).to be_empty }
+  it('has a status of 0') { expect(subject.status).to eq(0) }
 end
 
 RSpec.shared_examples 'a failed response' do |error|
-  it 'persists the person' do
-    expect(subject.output).to be_empty
-    expect(subject.error).to eq(error)
-    expect(subject.status).not_to eq(0)
-  end
+  it('does not have any output') { expect(subject.output).to be_empty }
+  it('has the expected error') { expect(subject.error).to eq(error) }
+  it('has a non-zero status') { expect(subject.status).not_to eq(0) }
 end
 
 RSpec.shared_examples 'does not persist any state' do
